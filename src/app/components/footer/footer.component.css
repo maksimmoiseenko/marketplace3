@@ -1,0 +1,71 @@
+img.logo-image{
+  width:50px;
+}
+img.icon{
+  width:20px;
+}
+.logo{
+  display: flex;
+  flex-direction: row;
+  margin-top:auto;
+  margin-bottom:auto;
+  color: white;
+
+}
+button{
+  background-color: rgba(255,255,255,0.95);
+}
+
+input{
+  background-color: #30D2BE;
+  border-radius: 15px;
+}
+input::placeholder{
+  color: white;
+}
+.topnav {
+  margin: 0 4%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.topnav div, .topnav img {
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+
+
+
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+a.nav-link{
+  color: white;
+}

@@ -1,0 +1,24 @@
+<div class="bg">
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <div class="white-bg mt-3 mb-3">
+    <h3>Каталог</h3>
+    <app-types (onChange)="changeDataSource($event)"></app-types>
+    <div class="brands">
+      <div><img src="../../../assets/image/ironman.png"></div>
+      <div><img src="../../../assets/image/harley-davidson.png"></div>
+      <div><img src="../../../assets/image/ironstar.png"></div>
+      <div><img src="../../../assets/image/ibu.png"></div>
+      <div><img src="../../../assets/image/minsk2019.png"></div>
+      <div><img src="../../../assets/image/fis.png"></div>
+    </div>
+    <h1>{{typeName}}</h1>
+    <div class="row mr-0 ml-0" style="width:100%">
+      <app-filter class="col-3 p-0"></app-filter>
+      <div class="list col-9 p-0">
+        <app-card *ngFor="let object of objects" [menuObject]="object"></app-card>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

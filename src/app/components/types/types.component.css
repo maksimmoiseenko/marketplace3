@@ -1,0 +1,15 @@
+
+td img{
+  width:20px;
+}
+table{
+  width:100%;
+  border: 1px solid #808080;
+}
+td{
+  border: 1px solid #808080;
+  text-align:center ;
+}
+td div{
+  font-size: small;
+}

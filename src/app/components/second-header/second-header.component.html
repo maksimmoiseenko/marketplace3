@@ -1,0 +1,22 @@
+
+<div class="topnav">
+  <div class="logo " (click)="router.navigate(['/'])">
+    <img class="logo-image " src="../../../assets/image/logo.svg">
+    <div>DayX</div>
+  </div>
+  <div class="search-container">
+    <form action="/src">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+  </div>
+
+  <div class="btn-group right" role="group" aria-label="Basic example">
+    <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light" style="color:rgba(48, 210, 190, 0.5)" (click)="router.navigate(['/signIn'])">Вход</button>
+    <button *ngIf="isLoggedIn" type="button" class="btn btn-outline-light" style="color:rgba(48, 210, 190, 0.5)" (click)="tokenStorage.signOut();isLoggedIn = false">Выход</button>
+    <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/facebook.svg"></button>
+    <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/vkcom.svg"></button>
+    <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/google.svg"></button>
+    <button type="button" class="btn btn-outline-light"><img style="width:100%" src="../../../assets/image/basket.svg"></button>
+  </div>
+
+</div>

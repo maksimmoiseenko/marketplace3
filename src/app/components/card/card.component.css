@@ -1,0 +1,35 @@
+.main{
+  width:100%;
+  margin-top: 15px;
+  padding-bottom: 10px;
+}
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+.avatar{
+  width:100%;
+}
+div{
+  padding: 0;
+}
+button{
+  background-color: #46407E;
+  border-radius: 5px;
+  color:white;
+  border:0;
+  font-size: small;
+  font-weight: lighter;
+}
+.price{
+  font-weight: 400;
+  font-size: small;
+}
+p{
+  font-size: small;
+  font-weight: lighter;
+}
+h5{
+  font-weight: 300;
+
+}

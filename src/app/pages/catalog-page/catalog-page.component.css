@@ -1,0 +1,53 @@
+.bg{
+  width:100%;
+  background-image: linear-gradient(to right, #473b7b, #3e4a88, #355893, #2e669b, #2c73a1, #227fa9, #1a8cb0, #1a98b5, #00a7bc, #00b6c0, #02c4c0, #30d2be);
+  min-height: 100vh;
+}
+.second-bar{
+  width:100%;
+}
+.white-bg{
+  width:100%;
+  padding: 30px 50px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.brands{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  width:100%;
+  overflow: scroll;
+  border-bottom: 1px solid #b0adad;
+}
+.brands div img{
+  margin: auto auto;
+  max-height: 100px;
+  max-width: 150px;
+}
+.brands div{
+  display: flex;
+}
+
+.text-on-pic{
+  position: relative;
+  color: white;
+}
+.text-on-pic div{
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.row{
+  width: 100%;
+  border-top: 1px solid #b0adad;
+}
+app-filter{
+  border-right: 1px solid #b0adad;
+}
+
