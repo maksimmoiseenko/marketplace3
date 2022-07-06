@@ -1,0 +1,53 @@
+<div class="bg">
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <div class="white-bg mt-3 mb-3">
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+          <div class="form-group">
+            <label for="price">Цена*</label>
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              [(ngModel)]="form.price"
+              required
+              #price="ngModel"
+            />
+            <div class="alert-danger" *ngIf="price.errors && f.submitted">
+              <div *ngIf="price.errors.required">Требуется цена</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Описание</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              [(ngModel)]="form.description"
+              #description="ngModel"
+            />
+          </div>
+
+
+
+
+
+          <div class="form-group">
+            <button [disabled]="!f.form.valid" class="btn btn-block login-button text-white mr-auto ml-auto">Сохранить</button>
+          </div>
+
+<!--          <div class="alert alert-warning" *ngIf="f.submitted && isSendingFailed">-->
+<!--            Регистрация неудачна!<br />{{ errorMessage }}-->
+<!--          </div>-->
+        </form>
+
+  </div>
+  <app-footer></app-footer>
+</div>
+
+

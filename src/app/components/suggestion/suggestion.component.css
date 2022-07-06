@@ -1,0 +1,14 @@
+.suggestion{
+  border-bottom: 1px solid #46407E33;
+  border-left: 1px solid #46407E33;
+
+}
+.text-smaller-08{
+  font-size:0.8rem;
+}
+.text-smaller-07{
+  font-size:0.7rem;
+}
+.text-overflow-wrap{
+  overflow-wrap: anywhere;
+}

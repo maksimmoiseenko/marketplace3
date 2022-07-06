@@ -1,0 +1,149 @@
+<div class="bg">
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <div class="white-bg mt-3 mb-3">
+    <h3>Информация о товаре или услуге</h3>
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      <!--товар или услуга-->
+      <div class="row mr-0 ml-0">
+        <div class="form-check mr-3">
+          <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios1" value="merchandise" checked>
+          <label class="form-check-label mt-0" for="exampleRadios1">
+            Товар
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios2" value="service">
+          <label class="form-check-label mt-0" for="exampleRadios2">
+            Услуга
+          </label>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="name">Название*</label>
+        <input
+          required
+          class="form-control input-text"
+          name="name"
+          [(ngModel)]="form.name"
+        />
+      </div>
+      <div class="form-group mb-3 pr-0 pl-0">
+        <label for="category">Категория*</label>
+        <select name="category" [(ngModel)]="form.category" style="height: 100%" required>
+            <option [value]="type.name" *ngFor="let type of types" [label]="type.name"></option>
+        </select>
+      </div>
+      <div class="row mr-0 ml-0">
+        <!-- цена -->
+        <div class="form-group col-sm-3 col-12 mb-3 pl-0 pr-0">
+          <label for="price">Цена*</label>
+          <input
+            type="number"
+            class="form-control input-text"
+            name="price"
+            [(ngModel)]="form.price"
+            required
+            #price="ngModel"
+          />
+          <div class="alert-danger" *ngIf="price.errors && f.submitted">
+            <div *ngIf="price.errors.required">Требуется цена</div>
+          </div>
+        </div>
+        <!-- валюта-->
+        <div class="form-group col-sm-3 col-12 mb-3 pr-0 pl-0-576px">
+          <label>Валюта*</label>
+          <select name="currency" [(ngModel)]="form.currency">
+            <option value="rub">руб</option>
+            <option value="grn">грн</option>
+            <option value="rrub">р.руб</option>
+            <option value="dollar">$</option>
+            <option value="euro">€</option>
+            <option value="tg">тг</option>
+            <option value="pound">£</option>
+            <option value="yuan">юань</option>
+          </select>
+        </div>
+        <div class="col-sm-1 col-2 mb-3 align-self-end pr-0 pl-0" style="text-align: center"><div>за</div></div>
+        <div class="form-group col-sm-5 col-10 mb-3 pr-0 pl-0">
+          <label>Единица измерения*</label>
+          <select name="unit" [(ngModel)]="form.unit" required>
+            <optgroup *ngFor="let group of units" [label]="group.name">
+              <option [value]="type.value" *ngFor="let type of group.types" [label]="type.viewValue"></option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="row mr-0 ml-0">
+        <div class="form-check mr-3">
+          <input class="form-check-input" (click)="selectAvailable()" [(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios3" value="yes" checked>
+          <label class="form-check-label mt-0" for="exampleRadios3">
+            В наличии
+          </label>
+        </div>
+        <div class="form-check mr-3">
+          <input class="form-check-input" (click)="selectNotAvailable()"[(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios4" value="no">
+          <label class="form-check-label mt-0" for="exampleRadios4">
+            Нет в наличии
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" (click)="selectOnOrder()" [(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios5" value="onOrder">
+          <label class="form-check-label mt-0" for="exampleRadios5">
+            Под заказ
+          </label>
+        </div>
+      </div>
+      <div *ngIf="availableIsSelected" class="form-group mb-3">
+        <label for="left">Осталось</label>
+        <input
+          type="number"
+          class="form-control input-text"
+          name="left"
+          [(ngModel)]="form.left"
+        />
+      </div>
+      <div *ngIf="onOrderIsSelected" class="form-group mb-3">
+        <label for="amountOfDays">Кол-во дней</label>
+        <input
+          type="number"
+          class="form-control input-text"
+          name="amountOfDays"
+          [(ngModel)]="form.amountOfDays"
+        />
+      </div>
+      <!--описание-->
+<!--      <div class="form-group">-->
+<!--        <label for="description">Описание</label>-->
+<!--        <input-->
+<!--          type="text"-->
+<!--          class="form-control input-text"-->
+<!--          name="description"-->
+<!--          [(ngModel)]="form.description"-->
+<!--          #description="ngModel"-->
+<!--        />-->
+<!--      </div>-->
+      <div class="form-group mb-3">
+        <label for="description">Описание</label>
+        <textarea
+          class="form-control input-text"
+          name="description"
+          [(ngModel)]="form.description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!f.form.valid" class="btn btn-block login-button text-white mr-auto ml-auto">Сохранить</button>
+      </div>
+
+      <!--          <div class="alert alert-warning" *ngIf="f.submitted && isSendingFailed">-->
+      <!--            Регистрация неудачна!<br />{{ errorMessage }}-->
+      <!--          </div>-->
+    </form>
+  </div>
+  <app-footer></app-footer>
+</div>
+

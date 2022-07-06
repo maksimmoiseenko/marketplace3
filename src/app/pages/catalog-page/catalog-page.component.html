@@ -16,7 +16,8 @@
     <div class="row mr-0 ml-0" style="width:100%">
       <app-filter class="col-3 p-0"></app-filter>
       <div class="list col-9 p-0">
-        <app-card *ngFor="let object of objects" [menuObject]="object"></app-card>
+          <app-card (click)="goToObjectPage(object)" *ngFor="let object of objects" [menuObject]="object"></app-card>
+<!--          <app-suggestions [menuObject]="object"></app-suggestions>-->
       </div>
     </div>
   </div>

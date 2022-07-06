@@ -1,0 +1,27 @@
+<div class="suggestion row mr-0 ml-0 pt-3 pb-3">
+  <div class="col-2 mt-auto mb-auto">
+    <div>{{suggestion.price}}p</div>
+    <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='yes'">В наличии</div>
+    <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='no'">Нет в наличии</div>
+    <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='onOrder'">На заказ</div>
+
+  </div>
+  <div class="col-7  mt-auto mb-auto">
+    <div class="text-overflow-wrap text-smaller-08" *ngIf="suggestion.menuObjectEntity.merchandiseOrService === 'merchandise'">
+       Продавец: {{suggestion.userEntity.email}}
+    </div>
+    <div class="text-overflow-wrap text-smaller-08" *ngIf="suggestion.menuObjectEntity.merchandiseOrService === 'service'">
+      Исполнитель: {{suggestion.userEntity.email}}
+    </div>
+    <div class="text-smaller-07">
+      Ближайшая доставка по адресу — сегодня
+      с 17:00 до 19:00, бесплатно
+    </div>
+
+  </div>
+  <div class="col-3 mt-auto mb-auto">
+    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" class="btn btn-outline-primary text-smaller">Купить сейчас</button>
+    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" (click)="addOrder(suggestion.id)" class="btn btn-outline-success text-smaller">В корзину</button>
+    <button *ngIf="suggestion.userEntity.id === tokenService.getUser().id" (click)="deleteSuggestion(suggestion.id)" class="btn btn-outline-danger text-smaller-08">Удалить</button>
+  </div>
+</div>

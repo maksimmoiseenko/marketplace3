@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -20,6 +20,11 @@ import {TypesComponent} from './components/types/types.component';
 import { CardComponent } from './components/card/card.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { SuggestionComponent } from './components/suggestion/suggestion.component';
+import { SuggestionsComponent } from './components/suggestions/suggestions.component';
+import { ObjectPageComponent } from './pages/object-page/object-page.component';
+import { AddSuggestionComponent } from './pages/add-suggestion/add-suggestion.component';
+import { AddServiceMerchandiseComponent } from './pages/add-service-merchandise/add-service-merchandise.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
     CatalogPageComponent,
     CardComponent,
     FilterComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    SuggestionComponent,
+    SuggestionsComponent,
+    ObjectPageComponent,
+    AddSuggestionComponent,
+    AddServiceMerchandiseComponent
   ],
   imports: [
     BrowserModule,

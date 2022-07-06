@@ -16,7 +16,7 @@
     <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/facebook.svg"></button>
     <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/vkcom.svg"></button>
     <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light"><img class="icon" src="../../../assets/image/google.svg"></button>
-    <button type="button" class="btn btn-outline-light"><img style="width:100%" src="../../../assets/image/basket.svg"></button>
+    <button (click)="router.navigate(['/shoppingCart/' + tokenStorage.getUser().id])" type="button" class="btn btn-outline-light"><img style="width:100%" src="../../../assets/image/basket.svg"></button>
   </div>
 
 </div>

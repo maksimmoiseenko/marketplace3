@@ -1,0 +1,66 @@
+
+.bg{
+  width:100%;
+  background-image: linear-gradient(to right, #473b7b, #3e4a88, #355893, #2e669b, #2c73a1, #227fa9, #1a8cb0, #1a98b5, #00a7bc, #00b6c0, #02c4c0, #30d2be);
+  min-height: 100vh;
+}
+.second-bar{
+  width:100%;
+}
+.white-bg{
+  width:100%;
+  padding: 30px 50px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+.btn-group{
+  width:100%;
+}
+button{
+  font-size: smaller;
+  color:black;
+  background:rgba(70, 64, 126, 0.05);
+  font-weight: 300;
+}
+.text-smaller{
+  font-size:0.7rem;
+}
+.width-16{
+  width:12px;
+}
+.width-24{
+  width:24px;
+}
+select{
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  width: 100%;
+  outline: none;
+}
+.login-button{
+  background-color: #46407E;
+  width:fit-content;
+}
+.input-text{
+  border:0;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  height: 25px;
+  outline: none;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: smaller;
+}
+select{
+  border-bottom: 1px solid black;
+}
+@media only screen and (max-width: 576px)  {
+  .pl-0-576px{
+    padding-left: 0;
+  }
+}

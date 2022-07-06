@@ -6,7 +6,6 @@ label {
 }
 form button{
   font-weight: 200;
-  background-color: #46407E;
 }
 .bg{
   min-height: 100vh;
@@ -63,3 +62,10 @@ input{
 .title{
   font-weight: 500;
 }
+select{
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  width: 100%;
+  outline: none;
+ }

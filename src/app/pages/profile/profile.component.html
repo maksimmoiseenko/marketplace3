@@ -1,0 +1,101 @@
+<div class="bg">
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <div class="white-bg mt-3 mb-3">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/main.svg">Главная</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/heart.svg">Избранное</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-24" src="assets/image/basketBlack.svg">Покупки</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/alert.svg">Обращения</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/like.svg">Отзывы и вопросы</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/wallet.svg">Финансы</button>
+      <button type="button" class="btn btn-outline-light"><img class="width-16" src="assets/image/settings.svg">Настройки</button>
+    </div>
+    <div class="row ml-0 mr-0 mt-4">
+      <div class="col-6 font-weight-light">
+        <div class="row mr-0 ml-0 ">
+          <img width="36" src="assets/image/avatar.svg">
+          <div class="mt-auto mb-auto ml-4">{{currentUser.email}}</div>
+        </div>
+        <div class="row mr-0 ml-0 mt-4 text-smaller">
+          <div>
+            <div class="text-secondary mb-2">Ник</div>
+            <div class="text-secondary mb-2">Email</div>
+            <div class="text-secondary mb-2">Телефон</div>
+            <div class="text-secondary mb-2">ФИО</div>
+          </div>
+          <div class="ml-4">
+            <div class="mb-2">{{currentUser.email}}</div>
+            <div class="mb-2">{{currentUser.email}}</div>
+            <div class="mb-2">-</div>
+            <div class="mb-2">-</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+          <div class="form-group">
+            <label for="firstname">Ваше имя*</label>
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              [(ngModel)]="form.firstname"
+              required
+              #firstname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+              <div *ngIf="firstname.errors.required">Требуется имя пользователя</div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="patronymic">Отчество</label>
+            <input
+              class="form-control"
+              name="patronymic"
+              [(ngModel)]="form.patronymic"
+              #patronymic="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">Фамилия*</label>
+            <input
+              class="form-control"
+              name="lastname"
+              required
+              [(ngModel)]="form.lastname"
+              #lastname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+              <div *ngIf="lastname.errors.required">Фамилия необходима</div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="sex">Выберите пол</label>
+            <select name="sex" [(ngModel)]="form.sex">
+              <option value="male">Мужской</option>
+              <option value="female">Женский</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button [disabled]="!f.form.valid" class="btn btn-block login-button text-white mr-auto ml-auto">Сохранить</button>
+          </div>
+
+          <div class="alert alert-warning" *ngIf="f.submitted && isSendingFailed">
+            Регистрация неудачна!<br />{{ errorMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
