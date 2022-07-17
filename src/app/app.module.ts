@@ -25,6 +25,11 @@ import { SuggestionsComponent } from './components/suggestions/suggestions.compo
 import { ObjectPageComponent } from './pages/object-page/object-page.component';
 import { AddSuggestionComponent } from './pages/add-suggestion/add-suggestion.component';
 import { AddServiceMerchandiseComponent } from './pages/add-service-merchandise/add-service-merchandise.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { AddAddressComponent } from './components/add-address/add-address.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { ClientOrdersComponent } from './pages/client-orders/client-orders.component';
+import { SupplierOrdersComponent } from './pages/supplier-orders/supplier-orders.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { AddServiceMerchandiseComponent } from './pages/add-service-merchandise/
     SuggestionsComponent,
     ObjectPageComponent,
     AddSuggestionComponent,
-    AddServiceMerchandiseComponent
+    AddServiceMerchandiseComponent,
+    CheckoutComponent,
+    AddAddressComponent,
+    OrdersComponent,
+    ClientOrdersComponent,
+    SupplierOrdersComponent
   ],
   imports: [
     BrowserModule,

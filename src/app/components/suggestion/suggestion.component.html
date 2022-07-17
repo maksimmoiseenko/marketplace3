@@ -13,15 +13,15 @@
     <div class="text-overflow-wrap text-smaller-08" *ngIf="suggestion.menuObjectEntity.merchandiseOrService === 'service'">
       Исполнитель: {{suggestion.userEntity.email}}
     </div>
-    <div class="text-smaller-07">
-      Ближайшая доставка по адресу — сегодня
-      с 17:00 до 19:00, бесплатно
-    </div>
+<!--    <div class="text-smaller-07">-->
+<!--      Ближайшая доставка по адресу — сегодня-->
+<!--      с 17:00 до 19:00, бесплатно-->
+<!--    </div>-->
 
   </div>
   <div class="col-3 mt-auto mb-auto">
-    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" class="btn btn-outline-primary text-smaller">Купить сейчас</button>
-    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" (click)="addOrder(suggestion.id)" class="btn btn-outline-success text-smaller">В корзину</button>
+    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" class="btn btn-outline-primary text-smaller" (click)="router.navigate(['/checkout/' + suggestion.id])">Купить сейчас</button>
+<!--    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" (click)="addOrder(suggestion.id)" class="btn btn-outline-success text-smaller">В корзину</button>-->
     <button *ngIf="suggestion.userEntity.id === tokenService.getUser().id" (click)="deleteSuggestion(suggestion.id)" class="btn btn-outline-danger text-smaller-08">Удалить</button>
   </div>
 </div>

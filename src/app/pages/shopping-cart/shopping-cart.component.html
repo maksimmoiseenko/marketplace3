@@ -11,15 +11,16 @@
     <div class="frame mt-4 pt-4 pb-4">
       <div *ngFor="let order of orders">
         <div  class="row m-0 pb-4">
+          <div class="col-1"><input type="checkbox"></div>
           <div class="col-3 d-flex justify-content-center align-self-center"><img [src]="'https://zoomyourevent.blob.core.windows.net/map/objectsPhoto/' + order.suggestionEntity.menuObjectEntity.imageUrl" alt=""></div>
           <div class="col-4  align-self-center">
             <div>{{order.suggestionEntity.menuObjectEntity.name}}</div>
             <div class=""><small>{{order.suggestionEntity.menuObjectEntity.description}}</small></div>
             <div class="text-muted"><small>Производитель:. Гарантия 12 месяцев.</small></div>
           </div>
-          <div class="col-2 d-flex justify-content-center align-self-center"></div>
+          <div class="col-1 d-flex justify-content-center align-self-center"></div>
           <div class="col-3 align-self-center text-right">
-            <div><button (click)="deleteOrder(order.id)" class="btn"><img src="assets/image/delete.svg"></button></div>
+            <div><button (click)="deleteOrder(order.id)" class="btn p-0"><img src="assets/image/delete.svg"></button></div>
             <div>{{order.suggestionEntity.price}}p</div>
             <div><small>В наличии на складе</small></div>
           </div>

@@ -10,6 +10,8 @@ import {ShoppingCartComponent} from './pages/shopping-cart/shopping-cart.compone
 import {AddSuggestionComponent} from './pages/add-suggestion/add-suggestion.component';
 import {ObjectPageComponent} from './pages/object-page/object-page.component';
 import {AddServiceMerchandiseComponent} from './pages/add-service-merchandise/add-service-merchandise.component';
+import {CheckoutComponent} from './pages/checkout/checkout.component';
+import {OrdersComponent} from './pages/orders/orders.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'addSuggestion/:id', component: AddSuggestionComponent},
   { path: 'shoppingCart/:id', component: ShoppingCartComponent },
   { path: 'addMerchandiseService', component: AddServiceMerchandiseComponent },
+  { path: 'checkout/:id', component: CheckoutComponent },
+  { path: 'orders', component: OrdersComponent },
 
 ];
 

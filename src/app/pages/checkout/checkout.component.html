@@ -1,0 +1,145 @@
+<div class="bg">
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <div class="white-bg mt-3 mb-3">
+    <h3>Оформление заказа</h3>
+    <form name="form"
+          (ngSubmit)="f.form.valid && submit()"
+          #f="ngForm"
+          novalidate>
+      <div class="first mb-3">
+        <div class="row mr-0 ml-0">
+          <div class="number1 mt-0 mr-3">
+            <p class="mb-0">1</p>
+          </div>
+          <div>
+            <div class="row ml-0 mr-0"><div>Доставка</div><div (click)="goToFirstPanel()" *ngIf="paymentPanelIsOpened" class=" ml-5 text-muted text-lighter text-smaller">Изменить</div></div>
+
+            <div *ngIf="deliveryPanelIsOpened">
+              <div class="text-smaller mt-2">Адреса получателя</div>
+              <div *ngFor="let address of addresses" class="row mr-0 ml-0">
+                <div><input type="radio" (click)="selectAddress(address)" name="address" class="mr-3"></div>
+                <div class="text-lighter text-smaller">{{address.locality}}, {{address.street}}, {{address.houseNumber}}, {{address.apartment}}</div>
+              </div>
+              <div class="row ml-0 mr-0 mt-3" (click)="openAddAddressDialog()">
+                <img src="assets/image/add.svg" >
+                <div class="text-lighter text-smaller text-muted ml-3">Добавить новый адрес</div>
+              </div>
+              <div class="line mt-2"></div>
+              <app-add-address *ngIf="newAddressPanel" (onClose)="closeAddAddressPanel()" (onSubmit)="saveAddress($event)"></app-add-address>
+              <div class="text-lighter text-smaller mt-3">Дата и время доставки</div>
+              <div class="row ml-0 mr-0 mt-3">
+                <input type="date" class="mr-3 form-control col-sm-6 col-12" [(ngModel)]="form.date" name="date">
+                <input type="time" class="form-control col-sm-5 col-12" [(ngModel)]="form.time" name="time">
+              </div>
+              <div class="row ml-0 mr-0 mt-2" >
+                <img style="width: 18px" src="assets/image/info.svg" class="mt-auto mb-auto mr-3">
+                <div class="text-smaller text-lighter word-wrap">
+                  Чтобы указать дату и время доставки, выберите любой из имеющихся адресов или добавьте новый
+                </div>
+              </div>
+              <button style="background-color: #46407E" class="btn text-white text-smaller text-lighter mt-2" (click)="goToSecondPanel()" [disabled]="form.date === null || form.time === null || selectedAddress === undefined">Перейти к способу оплаты</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="second mb-3">
+        <div class="row mr-0 ml-0">
+          <div class="number2 mt-0 mr-3">
+            <p class="mb-0">2</p>
+          </div>
+          <div>
+            <div class="row ml-0 mr-0"><div>Способ оплаты</div><div (click)="goToSecondPanel()" *ngIf="confirmationPanelIsOpened" class=" ml-5 text-muted text-lighter text-smaller">Изменить</div></div>
+            <div *ngIf="paymentPanelIsOpened">
+              <div >
+                <button class="btn text-smaller text-lighter mr-3 mt-2" (click)="clickOnPaymentOnCardOnline()" [ngClass]="paymentByCardOnline? 'violet-active-btn': 'light-btn'">Карта онлайн</button>
+                <button class="btn text-smaller text-lighter mt-2" (click)="clickOnPaymentOffline()" [ngClass]="!paymentByCardOnline? 'violet-active-btn': 'light-btn'">Оплата при получении</button>
+              </div>
+              <div *ngIf="paymentByCardOnline">
+                <div class="text-lighter text-smaller mt-1">Картой онлайн Visa, Mastercard, Maestro, Белкарт </div>
+                <div class="card row mr-0 ml-0 mt-2">
+                  <div class="front-side">
+                  <div class="row mr-0 ml-0">
+                    <div class="payment-system"><img src="assets/image/visa.png" alt=""></div>
+                    <div class="payment-system"><img src="assets/image/mastercard.png" alt=""></div>
+                    <div class="payment-system"><img src="assets/image/maestro.png" alt=""></div>
+                    <div class="payment-system"><img src="assets/image/belcard.png" alt=""></div>
+                  </div>
+                  <div class="text-lighter text-smaller">Номер карты</div>
+                  <input class="form-control card-number mt-1" pattern="[0-9]{16}" placeholder="0000 0000 0000 0000" [(ngModel)]="form.cardNumber" name="cardNumber">
+                  <div class="row mr-0 ml-0 mt-2">
+                    <div style="width: 30%">
+                      <input class="form-control mr-0" type="number"  placeholder="MM" [(ngModel)]="form.cardDateExpirationMonth" name="cardDateExpirationMonth">
+                    </div>
+                    <div class="slash">/</div>
+                    <div style="width: 30%">
+                      <input class="form-control mr-0" type="number"  placeholder="ГГ" [(ngModel)]="form.cardDateExpirationYear" name="cardDateExpirationYear">
+                    </div>
+                  </div>
+                </div>
+                  <div class="back-side">
+                    <div class="magnetic-line"></div>
+                    <div class="pr-3">
+                      <div style="text-align: left; width: 70px" class="ml-auto">
+                        <label>CVV</label>
+                        <input class="form-control cvv" type="number" placeholder="000" [(ngModel)]="form.cvv" name="cvv">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-1">
+                  <div class="row ml-0 mr-0"><input type="checkbox" class="mr-3"><div class="text-smaller text-lighter">Я согласен с  правилами</div></div>
+<!--                  <div class="mt-2"><button class="btn violet-active-btn text-white text-lighter text-smaller" [disabled]="true">Добавить карту</button></div>-->
+                </div>
+              </div>
+              <div *ngIf="!paymentByCardOnline">
+                <div>
+                  <input type="radio" name="paymentOfflineType" class="mr-3" checked value="card" [(ngModel)]="form.paymentOfflineType" >Картой при получении
+                </div>
+                <div>
+                  <input type="radio" name="paymentOfflineType" class="mr-3" value="cash" [(ngModel)]="form.paymentOfflineType">Наличными при получении
+                </div>
+              </div>
+              <div class="mt-2"><button class="btn violet-active-btn text-white text-lighter text-smaller" (click)="goToThirdPanel()">Перейти к подтверждению заказа</button></div>
+
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div class="third" >
+        <div class="row mr-0 ml-0">
+          <div class="number3 mt-0 mr-3">
+            <p class="mb-0 ">3</p>
+          </div>
+          <div>Отправляемый заказ</div>
+        </div>
+        <div *ngIf="confirmationPanelIsOpened">
+          <div class="mt-2 frame p-2 row ml-0 mr-0">
+            <div class="col-2"><img class="avatar" [src]="'https://zoomyourevent.blob.core.windows.net/map/objectsPhoto/' + suggestion.menuObjectEntity.imageUrl" alt=""></div>
+            <div class="col-8">
+              <div class="row ml-0 mr-0 d-flex justify-content-around">
+                <div>{{suggestion.menuObjectEntity.name}}</div>
+                <div class="text-muted text-lighter text-smaller">1 {{suggestion.unit}}</div>
+              </div>
+              <div class="text-smaller text-lighter" *ngIf="suggestion.menuObjectEntity.description !== 'null'">{{suggestion.menuObjectEntity.description}}</div>
+            </div>
+            <div class="col-2">{{suggestion.price}} {{suggestion.currency}}</div>
+          </div>
+          <div class="row mr-0 ml-0 mt-2">
+            <div class="text-lighter text-smaller">Комментарий к заказу</div>
+            <div class="text-smaller text-lighter text-muted">(необязательно)</div>
+          </div>
+          <div class="mt-2" style="width:100%">
+            <textarea style="width:100%; border-radius: 10px; border: 1px solid darkgrey; padding: 10px" [(ngModel)]="form.comment" name="comment" placeholder="Укажите дополнительные детали"></textarea>
+          </div>
+          <div class="line mt-2"></div>
+          <button [disabled]="!f.form.valid" class="btn text-smaller text-lighter submit-button text-white pl-2 pr-2 mt-2">Подтвердить</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</div>
+

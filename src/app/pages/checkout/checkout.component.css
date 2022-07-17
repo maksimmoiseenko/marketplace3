@@ -1,0 +1,111 @@
+.bg{
+  width:100%;
+  background-image: linear-gradient(to right, #473b7b, #3e4a88, #355893, #2e669b, #2c73a1, #227fa9, #1a8cb0, #1a98b5, #00a7bc, #00b6c0, #02c4c0, #30d2be);
+  min-height: 100vh;
+}
+.second-bar{
+  width:100%;
+}
+.white-bg{
+  width:100%;
+  padding: 30px 60px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+.number1, .number2, .number3{
+  height: 24px;
+  width: 24px;
+  text-align: center;
+}
+.number1 p, .number2 p, .number3 p{
+  background-color: grey;
+  color: white;
+  border-radius: 50%;
+  width: 100%;
+}
+.text-smaller{
+  font-size: smaller;
+}
+.text-lighter{
+  font-weight: 300;
+}
+.line{
+  height: 1px;
+  background-color: grey;
+}
+.word-wrap {
+  word-break: break-word;
+}
+.front-side{
+  padding: 1rem;
+
+}
+.back-side{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: right;
+}
+
+.front-side, .back-side{
+
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid grey;
+  width: 300px;
+  height: 190px;
+}
+*:focus {
+  box-shadow: none;
+}
+
+.card{
+  border: 0;
+}
+.payment-system{
+  width: 20%;
+  text-align: center;
+}
+.payment-system img{
+  max-width:100%;
+  max-height: 25px;
+}
+.card-number{
+  width:80%;
+}
+.slash{
+  text-align: center;
+  justify-content: center;
+  width: 10%;
+  font-size: larger;
+  color: grey;
+}
+.cvv{
+  width: 70px;
+  outline: none;
+}
+.magnetic-line{
+  height: 40px;
+  width: 100%;
+  background-color: grey;
+}
+
+.violet-active-btn{
+  background-color: #46407E;
+  border: 1px solid #46407E;
+  color: white;
+}
+.light-btn{
+  background-color: white;
+  border: 1px solid #46407E;
+  color:#46407E;
+}
+
+.submit-button{
+  background-color: #46407E;
+}
+.frame{
+  width: 100%;
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+}

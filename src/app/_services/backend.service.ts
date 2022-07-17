@@ -12,10 +12,16 @@ export class BackendService {
 
   constructor(private http: HttpClient) {}
 
+  getAddressesOfUser(): Observable<any> {
+    return this.http.get(BACKEND_API +  'user/addresses');
+  }
   sendAdditionalUserInfo(form: any, user: any): Observable<any> {
     return this.http.post(BACKEND_API + 'user/' + user.id + '/info', form, httpOptions);
   }
 
+  getSuggestionById(id: string): Observable<any>{
+    return this.http.get(BACKEND_API + 'suggestion/' + id);
+  }
   getUserById(id: number): Observable<any>{
     return this.http.get(BACKEND_API + 'user/' + id);
   }
@@ -39,8 +45,10 @@ export class BackendService {
   deleteOrder(orderId: number): Observable<any> {
     return this.http.delete(BACKEND_API + 'order/' + orderId);
   }
-  addOrder(suggestionId: number): Observable<any> {
-    return this.http.post(BACKEND_API + 'order', suggestionId);
+  addOrder(suggestionId: string, form: any, addressId: number): Observable<any> {
+    form.suggestionId = suggestionId;
+    form.addressId = addressId;
+    return this.http.post(BACKEND_API + 'order', form);
   }
   getObjectsByTypeId(typeId: string): Observable<any>{
     return this.http.get( BACKEND_API + 'objects/type/' + typeId);
@@ -53,5 +61,13 @@ export class BackendService {
   }
   getTypes(): Observable<any>{
     return this.http.get( BACKEND_API + 'types');
+  }
+
+  addAddress(form: any): Observable<any> {
+    return this.http.post( BACKEND_API + 'user/address', form);
+  }
+
+  getAllOrders(): Observable<any> {
+    return this.http.get(BACKEND_API + 'orders');
   }
 }

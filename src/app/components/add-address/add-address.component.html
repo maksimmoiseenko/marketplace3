@@ -1,0 +1,76 @@
+<div class="border rounded p-2 pb-2 mt-2">
+  <form
+    name="form"
+    (ngSubmit)="f.form.valid && submit()"
+    #f="ngForm"
+    novalidate>
+
+    <div class="row mr-0 ml-0">
+      <div class="col-11 pl-0"><h4>Добавление нового адреса</h4></div>
+      <div class="col-1" (click)="closeAddAddressPanel()"><img width="20" src="assets/image/cancel.svg" alt=""></div>
+    </div>
+    <div class="form-group">
+      <label class="mt-2 text-lighter">Населенный пункт</label>
+      <input class="form-control" placeholder="Введите данные" [(ngModel)]="form.locality" name="locality" required>
+    </div>
+
+    <div class="row ml-0 mr-0">
+      <div class="mr-2 col-7 p-0">
+        <label class="mt-2 text-lighter">Улица</label>
+        <input class="form-control" placeholder="Введите данные" [(ngModel)]="form.street" name="street" required>
+      </div>
+      <div class="mr-2 col-2 p-0">
+        <label class="mt-2 text-lighter">Дом</label>
+        <input class="form-control" placeholder="№" [(ngModel)]="form.houseNumber" name="houseNumber" required>
+      </div>
+      <div class="col-2 p-0">
+        <label class="mt-2 text-lighter">Корп.</label>
+        <input class="form-control" placeholder="№" [(ngModel)]="form.building" name="building">
+      </div>
+    </div>
+    <div class="row mr-0 ml-0">
+      <div class="mr-2 col-2 p-0">
+        <label class="mt-2 text-lighter">Подъезд</label>
+        <input class="form-control" placeholder="№" [(ngModel)]="form.entrance" name="entrance">
+      </div>
+      <div class="mr-2 col-2 p-0">
+        <label class="mt-2 text-lighter">Этаж</label>
+        <input class="form-control" placeholder="№" [(ngModel)]="form.floor" name="floor">
+      </div>
+      <div class="col-2 p-0">
+        <label class="mt-2 text-lighter">Квартира</label>
+        <input class="form-control" placeholder="№" [(ngModel)]="form.apartment" name="apartment">
+      </div>
+    </div>
+    <div>
+      <div class="mt-2 text-lighter row mr-0 ml-0"><div>Комментарий к адресу</div><div class="text-muted">(необязательно)</div></div>
+      <textarea class="form-control mt-2" name="comment" placeholder="Укажите дополнительные детали" [(ngModel)]="form.comment"></textarea>
+    </div>
+    <div class="text-lighter text-smaller text-muted mt-2 mb-2">Расскажите, как быстрее добраться к вам, укажите код домофона или другую информацию, которая может пригодиться курьеру.</div>
+    <h5 >Контактные данные</h5>
+    <div class="text-lighter text-smaller text-muted">Номер телефона и e-mail используются для оповещений об изменениях статуса заказа</div>
+    <div class="row mr-0 ml-0">
+      <div class="mr-2 col-sm-6 col-12 p-0">
+        <label class="mt-2 text-lighter">Имя</label>
+        <input class="form-control" placeholder="Введите данные" [(ngModel)]="form.firstname" name="firstname">
+      </div>
+      <div class="col-sm-5 col-12 p-0">
+        <label class="mt-2 text-lighter">Фамилия</label>
+        <input class="form-control" placeholder="Введите данные" [(ngModel)]="form.lastname" name="lastname">
+      </div>
+    </div>
+    <div class="row mr-0 ml-0">
+      <div class="mr-2 col-sm-7 col-12 p-0">
+        <label class="mt-2 text-lighter">Email</label>
+        <input class="form-control" placeholder="Введите данные" [(ngModel)]="form.email" name="email">
+      </div>
+      <div class="col-sm-4 col-12 p-0">
+        <label class="mt-2 text-lighter">Телефон</label>
+        <input class="form-control" placeholder="+375" [(ngModel)]="form.phone" name="phone"  required>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <button [disabled]="!f.form.valid" class="btn text-smaller text-lighter submit-button text-white pl-2 pr-2">Сохранить</button>
+    </div>
+  </form>
+</div>
