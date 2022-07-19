@@ -12,17 +12,20 @@ export class AddServiceMerchandiseComponent implements OnInit {
   public types: MenuType[] = [];
   availableIsSelected = true;
   onOrderIsSelected = false;
+  avatar: any;
+
   form: any = {
     name: null,
     price: null,
-    description: null,
+    descriptionObject: null,
     merchandiseOrService: 'merchandise',
     currency: 'rub',
     unit: 'piece',
     presence: 'yes',
     amountOfDays: null,
     left: null,
-    category: null
+    category: null,
+    descriptionSuggestion: null
   };
   units = [
     {
@@ -126,7 +129,12 @@ export class AddServiceMerchandiseComponent implements OnInit {
   }
   onSubmit(): void{
     console.log(this.form);
-    this.backendService.addSuggestionAndObject(this.form).subscribe();
+    this.backendService.addSuggestionAndObject(this.form).subscribe(suggestion => {
+      console.log(this.avatar);
+      if (this.avatar !== undefined) {
+        this.backendService.addObjectPicture(this.avatar, suggestion.menuObjectEntity.id).subscribe();
+      }
+    });
   }
 
   selectAvailable(): void {
@@ -147,5 +155,9 @@ export class AddServiceMerchandiseComponent implements OnInit {
     this.onOrderIsSelected = true;
     this.form.left = null;
 
+  }
+
+  onSelect(event: any): void {
+    this.avatar = event.target.files[0];
   }
 }

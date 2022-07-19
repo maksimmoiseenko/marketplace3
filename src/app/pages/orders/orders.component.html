@@ -3,35 +3,38 @@
   <app-second-header></app-second-header>
   <div class="white-bg mt-3 mb-3">
     <h3>Заказы</h3>
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">Фото</th>
-        <th scope="col">Название</th>
-        <th scope="col">Адрес</th>
-        <th scope="col">Стоимость</th>
-        <th scope="col">Оплата</th>
-        <th scope="col">Дата время</th>
-        <th scope="col">Телефон</th>
-        <th scope="col"></th>
+    <div class="scroll">
+      <table class="table">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Фото</th>
+          <th scope="col">Название</th>
+          <th scope="col">Адрес</th>
+          <th scope="col">Стоимость</th>
+          <th scope="col">Оплата</th>
+          <th scope="col">Дата время</th>
+          <th scope="col">Телефон</th>
+          <th scope="col"></th>
 
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let order of orders">
-        <th scope="row"><img class="avatar" [src]="'https://zoomyourevent.blob.core.windows.net/map/objectsPhoto/' + order.suggestionEntity.menuObjectEntity.imageUrl" alt=""></th>
-        <td>{{order.suggestionEntity.menuObjectEntity.name}}</td>
-        <td>{{order.address.locality}}, {{order.address.street}}, {{order.address.houseNumber}}, {{order.address.apartment}}</td>
-        <td>{{order.suggestionEntity.price}} {{order.suggestionEntity.currency}}</td>
-        <td *ngIf="order.paymentOnline">Онлайн</td>
-        <td *ngIf="!order.paymentOnline && order.paymentOfflineType === 'cash'">Наличные</td>
-        <td *ngIf="!order.paymentOnline && order.paymentOfflineType === 'card'">Картой при получении</td>
-        <td>{{order.date}} {{order.time}}</td>
-        <td>{{order.address.phone}}</td>
-        <td><button class="btn btn-outline-danger text-smaller" (click)="deleteOrder(order.id)">Удалить</button></td>
-      </tr>
-      </tbody>
-    </table>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+          <th scope="row"><img class="avatar" [src]="'https://zoomyourevent.blob.core.windows.net/map/objectsPhoto/' + order.suggestionEntity.menuObjectEntity.imageUrl" alt=""></th>
+          <td>{{order.suggestionEntity.menuObjectEntity.name}}</td>
+          <td>{{order.address.locality}}, {{order.address.street}}, {{order.address.houseNumber}}, {{order.address.apartment}}</td>
+          <td>{{order.suggestionEntity.price}} {{order.suggestionEntity.currency}}</td>
+          <td *ngIf="order.paymentOnline">Онлайн</td>
+          <td *ngIf="!order.paymentOnline && order.paymentOfflineType === 'cash'">Наличные</td>
+          <td *ngIf="!order.paymentOnline && order.paymentOfflineType === 'card'">Картой при получении</td>
+          <td>{{order.date}} {{order.time}}</td>
+          <td>{{order.address.phone}}</td>
+          <td><button class="btn btn-outline-danger text-smaller" (click)="deleteOrder(order.id)">Удалить</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
   <app-footer></app-footer>
 </div>

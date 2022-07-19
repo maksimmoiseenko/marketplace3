@@ -38,6 +38,7 @@ select{
   border-left: 0;
   width: 100%;
   outline: none;
+  border-bottom: 1px solid black;
 }
 .login-button{
   background-color: #46407E;
@@ -56,11 +57,13 @@ label {
   margin-bottom: 0;
   font-size: smaller;
 }
-select{
-  border-bottom: 1px solid black;
-}
+
 @media only screen and (max-width: 576px)  {
   .pl-0-576px{
     padding-left: 0;
+  }
+  .white-bg{
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

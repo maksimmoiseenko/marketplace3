@@ -1,0 +1,18 @@
+.bg{
+  width:100%;
+  background-image: linear-gradient(to right, #473b7b, #3e4a88, #355893, #2e669b, #2c73a1, #227fa9, #1a8cb0, #1a98b5, #00a7bc, #00b6c0, #02c4c0, #30d2be);
+  min-height: 100vh;
+}
+.second-bar{
+  width:100%;
+}
+.white-bg{
+  width:100%;
+  padding: 30px 60px;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+.text-smaller{
+  font-size: smaller;
+}

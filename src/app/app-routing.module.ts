@@ -12,20 +12,22 @@ import {ObjectPageComponent} from './pages/object-page/object-page.component';
 import {AddServiceMerchandiseComponent} from './pages/add-service-merchandise/add-service-merchandise.component';
 import {CheckoutComponent} from './pages/checkout/checkout.component';
 import {OrdersComponent} from './pages/orders/orders.component';
+import {AuthGuardService} from './_services/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'signIn', component: LoginComponent },
   { path: 'signUp', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'type/:id', component: CatalogPageComponent},
-  { path: 'object/:id', component: ObjectPageComponent},
-  { path: 'addSuggestion/:id', component: AddSuggestionComponent},
-  { path: 'shoppingCart/:id', component: ShoppingCartComponent },
-  { path: 'addMerchandiseService', component: AddServiceMerchandiseComponent },
-  { path: 'checkout/:id', component: CheckoutComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'type/:id', component: CatalogPageComponent, canActivate: [AuthGuardService]},
+  { path: 'object/:id', component: ObjectPageComponent, canActivate: [AuthGuardService]},
+  { path: 'addSuggestion/:id', component: AddSuggestionComponent, canActivate: [AuthGuardService], data: { roles: ['ROLE_SUPPLIER'] }},
+  { path: 'shoppingCart/:id', component: ShoppingCartComponent , canActivate: [AuthGuardService], data: { roles: ['ROLE_CLIENT'] }},
+  { path: 'addMerchandiseService', component: AddServiceMerchandiseComponent , canActivate: [AuthGuardService], data: { roles: ['ROLE_SUPPLIER'] }},
+  { path: 'checkout/:id', component: CheckoutComponent , canActivate: [AuthGuardService], data: { roles: ['ROLE_CLIENT'] }},
+  { path: 'orders', component: OrdersComponent , canActivate: [AuthGuardService], data: { roles: ['ROLE_ADMIN'] }},
+  { path: '**', component: HomeComponent}
 
 ];
 

@@ -10,33 +10,50 @@
       novalidate>
       <!--товар или услуга-->
       <div class="row mr-0 ml-0">
-        <div class="form-check mr-3">
-          <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios1" value="merchandise" checked>
-          <label class="form-check-label mt-0" for="exampleRadios1">
-            Товар
-          </label>
+        <div class="p-0 col-12 col-sm-6">
+          <div class="row mr-0 ml-0">
+            <div class="form-check mr-3">
+              <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios1" value="merchandise" checked>
+              <label class="form-check-label mt-0" for="exampleRadios1">
+                Товар
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios2" value="service">
+              <label class="form-check-label mt-0" for="exampleRadios2">
+                Аренда
+              </label>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="name">Название*</label>
+            <input
+              required
+              class="form-control input-text"
+              name="name"
+              [(ngModel)]="form.name"
+            />
+          </div>
+          <div class="form-group mb-3 pr-0 pl-0">
+            <label for="category">Категория*</label>
+            <select name="category" [(ngModel)]="form.category" style="height: 100%" required>
+              <option [value]="type.name" *ngFor="let type of types" [label]="type.name"></option>
+            </select>
+          </div>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" [(ngModel)]="form.merchandiseOrService" type="radio" name="merchandiseOrService" id="exampleRadios2" value="service">
-          <label class="form-check-label mt-0" for="exampleRadios2">
-            Услуга
-          </label>
+        <div class="p-0 col-12 col-sm-6">
+          <label for="formFile" class="form-label">Загрузите фото</label>
+          <input class="form-control" type="file" id="formFile" (change)="onSelect($event)">
+          <div class="mt-2" style="text-align: center "><button class="btn btn-outline-secondary" (click)="this.avatar = undefined">Удалить фото</button></div>
         </div>
       </div>
-      <div class="form-group mb-3">
-        <label for="name">Название*</label>
-        <input
-          required
+      <div class="form-group mb-3 mt-3">
+        <label for="descriptionObject">Описание</label>
+        <textarea
           class="form-control input-text"
-          name="name"
-          [(ngModel)]="form.name"
-        />
-      </div>
-      <div class="form-group mb-3 pr-0 pl-0">
-        <label for="category">Категория*</label>
-        <select name="category" [(ngModel)]="form.category" style="height: 100%" required>
-            <option [value]="type.name" *ngFor="let type of types" [label]="type.name"></option>
-        </select>
+          name="descriptionObject"
+          [(ngModel)]="form.descriptionObject"
+        ></textarea>
       </div>
       <div class="row mr-0 ml-0">
         <!-- цена -->
@@ -117,24 +134,15 @@
         />
       </div>
       <!--описание-->
-<!--      <div class="form-group">-->
-<!--        <label for="description">Описание</label>-->
-<!--        <input-->
-<!--          type="text"-->
-<!--          class="form-control input-text"-->
-<!--          name="description"-->
-<!--          [(ngModel)]="form.description"-->
-<!--          #description="ngModel"-->
-<!--        />-->
-<!--      </div>-->
-      <div class="form-group mb-3">
-        <label for="description">Описание</label>
+      <div class="form-group mb-3 mt-3">
+        <label for="descriptionSuggestion">Описание</label>
         <textarea
           class="form-control input-text"
-          name="description"
-          [(ngModel)]="form.description"
+          name="descriptionSuggestion"
+          [(ngModel)]="form.descriptionSuggestion"
         ></textarea>
       </div>
+
       <div class="form-group">
         <button [disabled]="!f.form.valid" class="btn btn-block login-button text-white mr-auto ml-auto">Сохранить</button>
       </div>

@@ -1,19 +1,19 @@
 <div class="main row">
-  <div class="col-1" style="text-align: center"><input type="checkbox"></div>
-  <div class="col-3"><img class="avatar" [src]="'https://zoomyourevent.blob.core.windows.net/map/objectsPhoto/' + menuObject.imageUrl" alt=""></div>
-  <div class="col-5 pl-3" >
+<!--  <div class="col-sm-1 col-12" style="text-align: center"><input type="checkbox"></div>-->
+  <div class="col-sm-4 col-12"><img class="avatar" [src]="menuObject.image_url" alt=""></div>
+  <div class="col-sm-5 col-4 pl-3" >
     <h5>{{menuObject.name}}</h5>
-    <p>{{menuObject.description}}</p>
+    <p *ngIf="menuObject.description !== 'null'">{{menuObject.description}}</p>
     <div class="row">
       <img src="../../../assets/image/star.svg">
       <img src="../../../assets/image/star.svg">
       <img src="../../../assets/image/star.svg">
       <img src="../../../assets/image/star.svg">
       <img src="../../../assets/image/star.svg">
-      <div class="ml-3">1 отзыв</div>
+<!--      <div class="ml-3">1 отзыв</div>-->
     </div>
   </div>
-  <div class="col-1 price mb-auto mt-auto">От 150 руб</div>
-  <div class="col-2 mb-auto mt-auto" style="text-align: center"><button class="ml-auto mr-auto" style="min-height: 40px">18 предложений</button></div>
-
+  <div class="col-sm-1 col-4 price mb-auto mt-auto padding-left-3-when-576px">От 150 руб</div>
+  <div class="col-sm-2 col-4 mb-auto mt-auto" style="text-align: center"><button class="ml-auto mr-auto" style="min-height: 40px">{{menuObject.suggestionsAmount}} предложений</button></div>
+  <div class="line col-sm-0 col-12 mt-1"></div>
 </div>

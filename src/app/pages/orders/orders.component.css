@@ -16,3 +16,7 @@
 .text-smaller{
   font-size: smaller;
 }
+.scroll{
+  width:100%;
+  overflow-x: scroll;
+}

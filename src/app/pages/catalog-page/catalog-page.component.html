@@ -14,8 +14,8 @@
     </div>
     <h1>{{typeName}}</h1>
     <div class="row mr-0 ml-0" style="width:100%">
-      <app-filter class="col-3 p-0"></app-filter>
-      <div class="list col-9 p-0">
+      <app-filter class="col-sm-3 col-0 p-0"></app-filter>
+      <div class="list col-sm-9 col-12 p-0">
           <app-card (click)="goToObjectPage(object)" *ngFor="let object of objects" [menuObject]="object"></app-card>
 <!--          <app-suggestions [menuObject]="object"></app-suggestions>-->
       </div>

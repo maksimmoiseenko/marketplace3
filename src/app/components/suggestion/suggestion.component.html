@@ -1,12 +1,12 @@
 <div class="suggestion row mr-0 ml-0 pt-3 pb-3">
-  <div class="col-2 mt-auto mb-auto">
+  <div class="col-sm-2 col-12 mt-auto mb-auto">
     <div>{{suggestion.price}}p</div>
     <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='yes'">В наличии</div>
     <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='no'">Нет в наличии</div>
     <div class="text-smaller-07 text-muted" *ngIf="suggestion.presence==='onOrder'">На заказ</div>
 
   </div>
-  <div class="col-7  mt-auto mb-auto">
+  <div class="col-sm-7 col-12 mt-auto mb-auto">
     <div class="text-overflow-wrap text-smaller-08" *ngIf="suggestion.menuObjectEntity.merchandiseOrService === 'merchandise'">
        Продавец: {{suggestion.userEntity.email}}
     </div>
@@ -19,9 +19,9 @@
 <!--    </div>-->
 
   </div>
-  <div class="col-3 mt-auto mb-auto">
+  <div class="col-sm-3 col-12 mt-auto mb-auto">
     <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" class="btn btn-outline-primary text-smaller" (click)="router.navigate(['/checkout/' + suggestion.id])">Купить сейчас</button>
 <!--    <button *ngIf="tokenService.getUser().role === 'ROLE_CLIENT'" (click)="addOrder(suggestion.id)" class="btn btn-outline-success text-smaller">В корзину</button>-->
-    <button *ngIf="suggestion.userEntity.id === tokenService.getUser().id" (click)="deleteSuggestion(suggestion.id)" class="btn btn-outline-danger text-smaller-08">Удалить</button>
+    <button *ngIf="suggestion.userEntity.id === tokenService.getUser().id || tokenService.getUser().role === 'ROLE_ADMIN'" (click)="deleteSuggestion(suggestion.id)" class="btn btn-outline-danger text-smaller-08">Удалить</button>
   </div>
 </div>

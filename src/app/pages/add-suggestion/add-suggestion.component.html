@@ -7,21 +7,85 @@
           (ngSubmit)="f.form.valid && onSubmit()"
           #f="ngForm"
           novalidate>
-          <div class="form-group">
-            <label for="price">Цена*</label>
-            <input
-              type="number"
-              class="form-control"
-              name="price"
-              [(ngModel)]="form.price"
-              required
-              #price="ngModel"
-            />
-            <div class="alert-danger" *ngIf="price.errors && f.submitted">
-              <div *ngIf="price.errors.required">Требуется цена</div>
+
+          <div class="row mr-0 ml-0">
+            <!-- цена -->
+            <div class="form-group col-sm-3 col-12 mb-3 pl-0 pr-0">
+              <label for="price">Цена*</label>
+              <input
+                type="number"
+                class="form-control input-text"
+                name="price"
+                [(ngModel)]="form.price"
+                required
+                #price="ngModel"
+              />
+              <div class="alert-danger" *ngIf="price.errors && f.submitted">
+                <div *ngIf="price.errors.required">Требуется цена</div>
+              </div>
+            </div>
+            <!-- валюта-->
+            <div class="form-group col-sm-3 col-12 mb-3 pr-0 pl-0-576px">
+              <label>Валюта*</label>
+              <select name="currency" [(ngModel)]="form.currency">
+                <option value="rub">руб</option>
+                <option value="grn">грн</option>
+                <option value="rrub">р.руб</option>
+                <option value="dollar">$</option>
+                <option value="euro">€</option>
+                <option value="tg">тг</option>
+                <option value="pound">£</option>
+                <option value="yuan">юань</option>
+              </select>
+            </div>
+            <div class="col-sm-1 col-2 mb-3 align-self-end pr-0 pl-0" style="text-align: center"><div>за</div></div>
+            <div class="form-group col-sm-5 col-10 mb-3 pr-0 pl-0">
+              <label>Единица измерения*</label>
+              <select name="unit" [(ngModel)]="form.unit" required>
+                <optgroup *ngFor="let group of units" [label]="group.name">
+                  <option [value]="type.value" *ngFor="let type of group.types" [label]="type.viewValue"></option>
+                </optgroup>
+              </select>
             </div>
           </div>
-
+          <div class="row mr-0 ml-0">
+            <div class="form-check mr-3">
+              <input class="form-check-input" (click)="selectAvailable()" [(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios3" value="yes" checked>
+              <label class="form-check-label mt-0" for="exampleRadios3">
+                В наличии
+              </label>
+            </div>
+            <div class="form-check mr-3">
+              <input class="form-check-input" (click)="selectNotAvailable()"[(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios4" value="no">
+              <label class="form-check-label mt-0" for="exampleRadios4">
+                Нет в наличии
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" (click)="selectOnOrder()" [(ngModel)]="form.presence" type="radio" name="presence" id="exampleRadios5" value="onOrder">
+              <label class="form-check-label mt-0" for="exampleRadios5">
+                Под заказ
+              </label>
+            </div>
+          </div>
+          <div *ngIf="availableIsSelected" class="form-group mb-3">
+            <label for="left">Осталось</label>
+            <input
+              type="number"
+              class="form-control input-text"
+              name="left"
+              [(ngModel)]="form.left"
+            />
+          </div>
+          <div *ngIf="onOrderIsSelected" class="form-group mb-3">
+            <label for="amountOfDays">Кол-во дней</label>
+            <input
+              type="number"
+              class="form-control input-text"
+              name="amountOfDays"
+              [(ngModel)]="form.amountOfDays"
+            />
+          </div>
           <div class="form-group">
             <label for="description">Описание</label>
             <input

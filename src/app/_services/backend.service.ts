@@ -70,4 +70,16 @@ export class BackendService {
   getAllOrders(): Observable<any> {
     return this.http.get(BACKEND_API + 'orders');
   }
+
+  getAllSupplierOrders(id: string): Observable<any> {
+    return this.http.get(BACKEND_API + 'orders/supplier/' + id);
+  }
+  getAllClientsOrders(id: string): Observable<any> {
+    return this.http.get(BACKEND_API + 'orders/client/' + id);
+  }
+  addObjectPicture(avatar: File, objectId: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', avatar);
+    return this.http.post(BACKEND_API + 'object/' + objectId + '/uploadImage', formData);
+  }
 }
